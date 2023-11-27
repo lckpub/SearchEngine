@@ -1,0 +1,15 @@
+{%extends 'search_page.html'%}
+
+{%block body%}
+    <h1>Search results</h1>
+    <form action="resultim">
+        <a href="/showres_text_datesorted?Query={{Query}}">网页<a> <a href="/showres_img_datesorted?Query={{Query}}">图片<a></a>
+        <a href="/showres_img?Query={{Query}}">相关度<a> <a href="/showres_img_datesorted?Query={{Query}}">时间<a></a>
+    </form>
+    <hr>
+    <h4>Results for: {{ Query }}</h4>
+    {% for result in results%}
+        <img src={{result['imgurl']}} style="width:395px;height:230px;">
+        <a href={{result['url']}}>{{result['title']}}</a>
+    {% endfor %}
+{%endblock%}

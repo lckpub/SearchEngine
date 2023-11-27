@@ -1,0 +1,32 @@
+{%extends 'search_page.html'%}
+
+{%block body%}
+    <a href="/showres_text_datesorted?Query={{Query}}">网页<a> <a href="/showres_img_datesorted?Query={{Query}}">图片<a></a>
+    <a href="/showres_text?Query={{Query}}">相关度<a> <a href="/showres_text_datesorted?Query={{Query}}">时间<a></a>
+    <h1>Details</h1>
+    <h2>Search Result For : "{{ Query }}"</h2>
+    {% if dataSet | length>0 %}
+    <p>There are {{ dataSet | length }} results</p>
+    <div>
+    {% for res in dataSet %}
+        <div class="title">
+            <h3 class="title">
+                <a href="{{ res['url'] }}">{{res['title']}}</a>
+            </h3>
+        </div>
+        <div class="related_text">
+            <p>{{res['related_text'] | safe }}</p>
+        </div>
+        <div class="url">
+            <font color="green"><cite>{{res.url}}</cite></font>
+        </div>
+        
+        
+        
+    {% endfor %}
+    </div>
+{% else %}
+    <p>There are no result</p>
+{% endif %}
+<a href="{{ url_for('index_form') }}">&larr; Return</a>
+{%endblock%}

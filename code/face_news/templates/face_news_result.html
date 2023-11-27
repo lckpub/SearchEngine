@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Result</title>
+</head>
+
+<style>
+    #para
+    {color:green;}
+</style>
+
+<body>
+    <h1>Face Search</h1>
+    <form action="result">
+        <label>target image</label>
+        
+
+    </form>
+
+
+    <h2>Search Result for target image</h2>
+    {% for ports in result %}
+        <div>
+            
+            <a href={{ports[1]}}> {{ports[0]}}</a>
+            <!-- <hr> -->
+            <p id="para">{{ports[1]}}</p>
+            <p>{{ports[2]|safe}}</p>
+        </div>
+    {% endfor %}
+
+</body>
+</html>
